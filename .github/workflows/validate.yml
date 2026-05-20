@@ -1,0 +1,23 @@
+name: Generate and validate Bulgarian translation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Generate official bg.txt
+        run: |
+          python tools/convert_flat_to_obsidian_translation.py \
+            --flat legacy/bg.raw.txt \
+            --mapping legacy/mapping.txt \
+            --output translations/bg.txt
+      - name: Validate generated translation
+        run: |
+          python tools/validate_translation.py translations/bg.txt
