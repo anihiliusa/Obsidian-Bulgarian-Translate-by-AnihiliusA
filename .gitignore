@@ -1,0 +1,12 @@
+# Never commit proprietary Obsidian packages
+*.asar
+obsidian-*.asar
+
+# Generated files
+translation_warnings.txt
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
